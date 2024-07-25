@@ -3,6 +3,14 @@ window.onload = function() {
     let currentColor = 'black';
     let imageObject = null;
 
+    // Center the canvas container
+    const canvasContainer = document.getElementById('canvas-container');
+    canvasContainer.style.margin = 'auto';
+    canvasContainer.style.position = 'absolute';
+    canvasContainer.style.top = '50%';
+    canvasContainer.style.left = '50%';
+    canvasContainer.style.transform = 'translate(-50%, -50%)';
+
     document.getElementById('uploadImage').addEventListener('change', function(e) {
         const reader = new FileReader();
         reader.onload = function(event) {
@@ -24,9 +32,6 @@ window.onload = function() {
                 canvas.clear();
                 canvas.add(imageObject);
                 canvas.renderAll();
-
-                // Process the image to detect regions
-                processImageForRegions(imgObj);
             }
         }
         reader.readAsDataURL(e.target.files[0]);
@@ -37,46 +42,6 @@ window.onload = function() {
             currentColor = e.target.dataset.color;
         });
     });
-
-    function processImageForRegions(img) {
-        // Create a canvas element to process the image
-        const tempCanvas = document.createElement('canvas');
-        const tempCtx = tempCanvas.getContext('2d');
-        tempCanvas.width = img.width;
-        tempCanvas.height = img.height;
-
-        tempCtx.drawImage(img, 0, 0);
-        const imgData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
-        const pixels = imgData.data;
-
-        // Process the image data to detect regions
-        // Example: Use thresholding to create a mask where regions are detected
-        for (let i = 0; i < pixels.length; i += 4) {
-            const alpha = pixels[i + 3];
-            if (alpha === 0) {
-                pixels[i] = 255;   // White color for transparent regions
-                pixels[i + 1] = 255;
-                pixels[i + 2] = 255;
-            } else {
-                pixels[i] = 0;     // Black color for non-transparent regions
-                pixels[i + 1] = 0;
-                pixels[i + 2] = 0;
-            }
-        }
-
-        tempCtx.putImageData(imgData, 0, 0);
-        const maskImage = new fabric.Image(tempCanvas);
-        maskImage.set({
-            left: 0,
-            top: 0,
-            angle: 0,
-            scaleX: canvas.width / img.width,
-            scaleY: canvas.height / img.height,
-            selectable: false
-        });
-        canvas.add(maskImage);
-        canvas.renderAll();
-    }
 
     function paintBucket(x, y) {
         const ctx = canvas.getContext('2d');
