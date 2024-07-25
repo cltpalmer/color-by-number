@@ -35,11 +35,7 @@
 </head>
 <body>
     <h1>Color by Number</h1>
-    <div class="image-selection">
-        <img src="image1.png" alt="Image 1" id="image1">
-        <img src="image2.png" alt="Image 2" id="image2">
-        <img src="image3.png" alt="Image 3" id="image3">
-    </div>
+    <input type="file" id="uploadImage" accept="image/*">
     <canvas id="coloringCanvas" width="500" height="500"></canvas>
     <div class="color-palette">
         <!-- Add more colors as needed -->
@@ -59,6 +55,7 @@
         <div class="color-box" style="background-color: lime;" data-color="lime"></div>
         <div class="color-box" style="background-color: teal;" data-color="teal"></div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
