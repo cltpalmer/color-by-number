@@ -116,4 +116,3 @@ window.onload = function() {
         const pointer = canvas.getPointer(event.e);
         paintBucket(pointer.x, pointer.y);
     });
-};
