@@ -18,16 +18,46 @@
             margin-right: 5px;
             cursor: pointer;
         }
+        .image-selection {
+            margin-bottom: 20px;
+        }
+        .image-selection img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .image-selection img.selected {
+            border-color: blue;
+        }
     </style>
 </head>
 <body>
     <h1>Color by Number</h1>
+    <div class="image-selection">
+        <img src="image1.png" alt="Image 1" id="image1">
+        <img src="image2.png" alt="Image 2" id="image2">
+        <img src="image3.png" alt="Image 3" id="image3">
+    </div>
     <canvas id="coloringCanvas" width="500" height="500"></canvas>
     <div class="color-palette">
+        <!-- Add more colors as needed -->
         <div class="color-box" style="background-color: red;" data-color="red"></div>
         <div class="color-box" style="background-color: blue;" data-color="blue"></div>
         <div class="color-box" style="background-color: green;" data-color="green"></div>
-        <!-- Add more colors as needed -->
+        <div class="color-box" style="background-color: yellow;" data-color="yellow"></div>
+        <div class="color-box" style="background-color: orange;" data-color="orange"></div>
+        <div class="color-box" style="background-color: purple;" data-color="purple"></div>
+        <div class="color-box" style="background-color: pink;" data-color="pink"></div>
+        <div class="color-box" style="background-color: brown;" data-color="brown"></div>
+        <div class="color-box" style="background-color: black;" data-color="black"></div>
+        <div class="color-box" style="background-color: white;" data-color="white"></div>
+        <div class="color-box" style="background-color: gray;" data-color="gray"></div>
+        <div class="color-box" style="background-color: cyan;" data-color="cyan"></div>
+        <div class="color-box" style="background-color: magenta;" data-color="magenta"></div>
+        <div class="color-box" style="background-color: lime;" data-color="lime"></div>
+        <div class="color-box" style="background-color: teal;" data-color="teal"></div>
     </div>
     <script src="script.js"></script>
 </body>
