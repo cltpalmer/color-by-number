@@ -1,6 +1,6 @@
 window.onload = function() {
     const canvas = new fabric.Canvas('coloringCanvas');
-    let currentColor = 'rgba(0, 0, 0, 1)'; // Default color is black
+    let currentColor = 'black';
     let imageObject = null;
 
     // Center the canvas container
